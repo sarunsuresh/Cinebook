@@ -9,7 +9,12 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json())
-
+require('dotenv').config()
+const mongoose =require('mongoose')
+console.log(process.env.URL)
+mongoose.connect(process.env.URL).then(()=>{
+    console.log('connected')
+})
 
 app.use('/auth',authroute)
 app.use('/admin',adminRoute)
